@@ -1,6 +1,7 @@
 // 导入颜色选择器组件
 // import ColorPicker from './color-picker'
 import Button from './button'
+import Progress from './progress'
 // import Dialog from './dialog'
 // import Input from './input'
 // import Checkbox from './checkbox'
@@ -10,7 +11,8 @@ import './fonts/font.scss'
 // 存储组件列表
 const components = [
   // ColorPicker,
-  Button
+  Button,
+  Progress
   // Dialog,
   // Input,
   // Checkbox,
