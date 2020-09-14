@@ -1,15 +1,18 @@
 <template>
   <div>
     <test-button></test-button>
+    <test-link></test-link>
   </div>
 </template>
 
 <script>
 import TestButton from './TestButton'
+import TestLink from './TestLink'
 // console.log(TestButton)
 export default {
   components: {
-    TestButton
+    TestButton,
+    TestLink
   }
 }
 </script>
