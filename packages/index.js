@@ -2,7 +2,7 @@
 // import ColorPicker from './color-picker'
 import Button from './button'
 // import Dialog from './dialog'
-// import Input from './input'
+import Input from './input'
 // import Checkbox from './checkbox'
 // import Radio from './radio'
 // import Switch from './switch'
@@ -10,9 +10,9 @@ import './fonts/font.scss'
 // 存储组件列表
 const components = [
   // ColorPicker,
-  Button
+  Button,
   // Dialog,
-  // Input,
+  Input,
   // Checkbox,
   // Radio,
   // Switch
@@ -32,9 +32,9 @@ export default {
   // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
   install,
   // 以下是具体的组件列表
-  Button
+  Button,
   // Dialog,
-  // Input,
+  Input,
   // Checkbox,
   // Radio,
   // Switch
