@@ -1,6 +1,7 @@
 // 导入颜色选择器组件
 // import ColorPicker from './color-picker'
 import Button from './button'
+import Link from './link'
 // import Dialog from './dialog'
 import Input from './input'
 // import Checkbox from './checkbox'
@@ -11,6 +12,7 @@ import './fonts/font.scss'
 const components = [
   // ColorPicker,
   Button,
+  Link,
   // Dialog,
   Input,
   // Checkbox,
@@ -25,7 +27,8 @@ const install = function (Vue) {
   })
 }
 // 判断是否是直接引入文件
-if (typeof window !== 'undefined' && window.Vue) {
+if (typeof window !== 'undefined' && window.Vue)
+{
   install(window.Vue)
 }
 export default {
@@ -33,6 +36,7 @@ export default {
   install,
   // 以下是具体的组件列表
   Button,
+  Link,
   // Dialog,
   Input,
   // Checkbox,
