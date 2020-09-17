@@ -3,7 +3,7 @@
 import Button from './button'
 import Link from './link'
 // import Dialog from './dialog'
-// import Input from './input'
+import Input from './input'
 // import Checkbox from './checkbox'
 // import Radio from './radio'
 // import Switch from './switch'
@@ -12,9 +12,9 @@ import './fonts/font.scss'
 const components = [
   // ColorPicker,
   Button,
-  Link
+  Link,
   // Dialog,
-  // Input,
+  Input,
   // Checkbox,
   // Radio,
   // Switch
@@ -36,9 +36,9 @@ export default {
   install,
   // 以下是具体的组件列表
   Button,
-  Link
+  Link,
   // Dialog,
-  // Input,
+  Input,
   // Checkbox,
   // Radio,
   // Switch
