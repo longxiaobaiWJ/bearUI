@@ -8,7 +8,7 @@ import Dropdown from "./dropdown";
 import DropdownItem from "./dropdown-item";
 import DropdownMenu from "./dropdown-menu";
 // import Dialog from './dialog'
-// import Input from './input'
+import Input from './input'
 // import Checkbox from './checkbox'
 // import Radio from './radio'
 // import Switch from './switch'
@@ -17,14 +17,17 @@ import "./fonts/font.scss";
 const components = [
   // ColorPicker,
   Button,
+<<<<<<< HEAD
   ButtonGroup,
   Breadcrumb,
   BreadcrumbItem,
   Dropdown,
   DropdownItem,
   DropdownMenu,
+=======
+>>>>>>> 020bcf52b9d98251cd08c1be639bdcfddf81d621
   // Dialog,
-  // Input,
+  Input,
   // Checkbox,
   // Radio,
   // Switch
@@ -45,14 +48,17 @@ export default {
   install,
   // 以下是具体的组件列表
   Button,
+<<<<<<< HEAD
   ButtonGroup,
   Breadcrumb,
   BreadcrumbItem,
   Dropdown,
   DropdownItem,
   DropdownMenu,
+=======
+>>>>>>> 020bcf52b9d98251cd08c1be639bdcfddf81d621
   // Dialog,
-  // Input,
+  Input,
   // Checkbox,
   // Radio,
   // Switch

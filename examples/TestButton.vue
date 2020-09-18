@@ -1,8 +1,13 @@
 <template>
   <div>
+<<<<<<< HEAD
     <h2>按钮</h2>
     <div class="row bu-button">
       <bu-button plain @click="clickbtn">按钮</bu-button>
+=======
+    <div class="row bu-button">
+      <bu-button>按钮</bu-button>
+>>>>>>> 020bcf52b9d98251cd08c1be639bdcfddf81d621
       <bu-button type="primary">按钮</bu-button>
       <bu-button type="success">按钮</bu-button>
       <bu-button type="info">按钮</bu-button>
@@ -52,6 +57,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 export default {
   methods: {
     clickbtn () {
@@ -59,6 +65,9 @@ export default {
     }
   }
 }
+=======
+export default {}
+>>>>>>> 020bcf52b9d98251cd08c1be639bdcfddf81d621
 </script>
 
 <style lang="scss" scoped>
