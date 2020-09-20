@@ -70,7 +70,7 @@ export default {
   computed: {
     barStyle() {
       const style = {}
-      style.width = this.format(this.percentage)
+      style.width = this.percentage + '%'
       if (!this.color) {
         let ret
         switch (this.status) {
