@@ -7,6 +7,7 @@ import BreadcrumbItem from "./breadcrumb-item";
 import Dropdown from "./dropdown";
 import DropdownItem from "./dropdown-item";
 import DropdownMenu from "./dropdown-menu";
+import Progress from './progress'
 // import Dialog from './dialog'
 import Input from "./input";
 // import Checkbox from './checkbox'
@@ -23,6 +24,7 @@ const components = [
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  Progress,
   // Dialog,
   Input,
   // Checkbox,
@@ -51,6 +53,7 @@ export default {
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  Progress,
   // Dialog,
   Input,
   // Checkbox,

@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <h2>button</h2>
-    <test-button></test-button>
-    <h2>breadcrumb</h2>
-    <test-breadcrumb></test-breadcrumb>
-    <h2>dropdown</h2>
-    <test-dropdown></test-dropdown>
-    <h2>input</h2>
-    <test-input></test-input>
-  </div>
+<div>
+  <h2>button</h2>
+  <test-button></test-button>
+  <h2>breadcrumb</h2>
+  <test-breadcrumb></test-breadcrumb>
+  <h2>dropdown</h2>
+  <test-dropdown></test-dropdown>
+  <h2>input</h2>
+  <test-input></test-input>
+  <h2>progress</h2>
+  <test-progress></test-progress>
+</div>
 </template>
 
 <script>
@@ -16,13 +18,15 @@ import TestButton from './TestButton'
 import TestBreadcrumb from './TestBreadcrumb'
 import TestDropdown from './TestDropdown'
 import TestInput from './TestInput'
+import TestProgress from './TestProgress'
 
 export default {
   components: {
     TestButton,
     TestBreadcrumb,
     TestDropdown,
-    TestInput
+    TestInput,
+    TestProgress
   }
 }
 </script>
@@ -31,6 +35,7 @@ export default {
 .row {
   padding: 10px 0;
 }
+
 .hm-button {
   margin-left: 10px;
 }
