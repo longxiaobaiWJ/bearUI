@@ -1,5 +1,4 @@
 <template>
-<div>
   <bu-main>
     <h2>button</h2>
     <test-button></test-button>
@@ -11,8 +10,9 @@
     <test-input></test-input>
     <h2>progress</h2>
     <test-progress></test-progress>
+    <h2>divider</h2>
+    <test-divider></test-divider>
   </bu-main>
-</div>
 </template>
 
 <script>
@@ -21,6 +21,7 @@ import TestBreadcrumb from './TestBreadcrumb'
 import TestDropdown from './TestDropdown'
 import TestInput from './TestInput'
 import TestProgress from './TestProgress'
+import TestDivider from './TestDivider'
 
 export default {
   components: {
@@ -28,17 +29,18 @@ export default {
     TestBreadcrumb,
     TestDropdown,
     TestInput,
-    TestProgress
-  }
+    TestProgress,
+    TestDivider,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.row {
-  padding: 10px 0;
-}
+  .row {
+    padding: 10px 0;
+  }
 
-.hm-button {
-  margin-left: 10px;
-}
+  .hm-button {
+    margin-left: 10px;
+  }
 </style>
