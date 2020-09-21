@@ -1,15 +1,17 @@
 <template>
 <div>
-  <h2>button</h2>
-  <test-button></test-button>
-  <h2>breadcrumb</h2>
-  <test-breadcrumb></test-breadcrumb>
-  <h2>dropdown</h2>
-  <test-dropdown></test-dropdown>
-  <h2>input</h2>
-  <test-input></test-input>
-  <h2>progress</h2>
-  <test-progress></test-progress>
+  <bu-main>
+    <h2>button</h2>
+    <test-button></test-button>
+    <h2>breadcrumb</h2>
+    <test-breadcrumb></test-breadcrumb>
+    <h2>dropdown</h2>
+    <test-dropdown></test-dropdown>
+    <h2>input</h2>
+    <test-input></test-input>
+    <h2>progress</h2>
+    <test-progress></test-progress>
+  </bu-main>
 </div>
 </template>
 

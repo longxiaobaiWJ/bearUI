@@ -8,6 +8,7 @@ import Dropdown from "./dropdown";
 import DropdownItem from "./dropdown-item";
 import DropdownMenu from "./dropdown-menu";
 import Progress from './progress'
+import Main from './main'
 // import Dialog from './dialog'
 import Input from "./input";
 // import Checkbox from './checkbox'
@@ -25,6 +26,7 @@ const components = [
   DropdownItem,
   DropdownMenu,
   Progress,
+  Main,
   // Dialog,
   Input,
   // Checkbox,
@@ -54,6 +56,7 @@ export default {
   DropdownItem,
   DropdownMenu,
   Progress,
+  Main,
   // Dialog,
   Input,
   // Checkbox,
