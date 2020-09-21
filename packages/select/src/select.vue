@@ -1,12 +1,10 @@
 <template>
-  <main class="bu-main">
-    <slot></slot>
-  </main>
+
 </template>
 
 <script>
 export default {
-  name: "buMain",
+  name: "buSelect",
 }
 </script>
 
