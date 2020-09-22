@@ -14,12 +14,78 @@
       </div>
     </div>
     <div class="row">
-      <h3>文本域</h3>
+      <h3>可清空</h3>
       <div class="source">
         <bu-input
           v-model="value3"
-          type="textarea"
           placeholder="请输入内容"
+          clearable
+        ></bu-input>
+      </div>
+    </div>
+    <div class="row">
+      <h3>密码框</h3>
+      <div class="source">
+        <bu-input
+          v-model="value4"
+          type="password"
+          showPassword
+          placeholder="请输入密码"
+        ></bu-input>
+      </div>
+    </div>
+    <div class="row">
+      <h3>文本域</h3>
+      <div class="source">
+        <bu-input
+          v-model="value5"
+          type="textarea"
+          rows="3"
+          placeholder="请输入内容"
+        ></bu-input>
+      </div>
+    </div>
+    <div class="row">
+      <h3>尺寸</h3>
+      <div class="source demo-input">
+        <bu-input
+          v-model="value6"
+          size="large"
+          suffix-icon="bu-icon-date"
+          placeholder="large(默认)"
+        ></bu-input>
+        <bu-input
+          v-model="value6"
+          size="medium"
+          suffix-icon="bu-icon-date"
+          placeholder="medium"
+        ></bu-input>
+        <bu-input
+          v-model="value6"
+          size="small"
+          suffix-icon="bu-icon-date"
+          placeholder="small"
+        ></bu-input>
+        <bu-input
+          v-model="value6"
+          size="mini"
+          suffix-icon="bu-icon-date"
+          placeholder="mini"
+        ></bu-input>
+      </div>
+    </div>
+    <div class="row">
+      <h3>带 icon 的输入框</h3>
+      <div class="source demo-input">
+        <bu-input
+          v-model="value7"
+          placeholder="请输入日期"
+          suffix-icon="bu-icon-date"
+        ></bu-input>
+        <bu-input
+          placeholder="请输入内容"
+          prefix-icon="bu-icon-search"
+          v-model="value7"
         ></bu-input>
       </div>
     </div>
@@ -32,7 +98,11 @@ export default {
     return {
       value: '',
       value2: '',
-      value3: ''
+      value3: '',
+      value4: '',
+      value5: '',
+      value6: '',
+      value7: ''
     }
   }
 }
@@ -69,5 +139,9 @@ export default {
       width: 420px;
     }
   }
+}
+.demo-input .bu-input {
+  vertical-align: top;
+  margin: 0 10px 10px 0;
 }
 </style>

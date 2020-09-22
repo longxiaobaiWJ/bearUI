@@ -2,8 +2,11 @@
   <div
     :class="[
       type === 'textarea' ? 'bu-textarea' : 'bu-input',
+      inputSize ? 'bu-input--' + inputSize : '',
       {
-        'is-disabled': inputDisabled
+        'is-disabled': inputDisabled,
+        'bu-input--prefix': $slots.prefix || prefixIcon,
+        'bu-input--suffix': $slots.suffix || suffixIcon || clearable || showPassword
       }
     ]"
     @mouseenter="hovering = true"
@@ -22,6 +25,36 @@
         @blur="handleBlur"
         @change="handleChange"
       />
+
+      <!-- 前置内容 -->
+      <span class="bu-input__prefix" v-if="$slots.prefix || prefixIcon">
+        <slot name="prefix"></slot>
+        <i class="bu-input__icon"
+           v-if="prefixIcon"
+           :class="prefixIcon">
+        </i>
+      </span>
+
+      <!-- 后置内容 -->
+      <span class="bu-input__suffix" v-if="getSuffixVisible()">
+        <span class="bu-input__suffix-inner">
+          <template v-if="!showClear || !showPwdVisible || !isWordLimitVisible">
+            <slot name="suffix"></slot>
+            <i class="bu-input__icon" v-if="suffixIcon" :class="suffixIcon"></i>
+          </template>
+          <i
+            v-if="showClear"
+            class="bu-input__icon bu-icon-circle-close bu-input__clear"
+            @mousedown.prevent
+            @click="clear"
+          ></i>
+          <i
+            v-if="showPwdVisible"
+            class="bu-input__icon bu-icon-view bu-input__clear"
+            @click="handlePasswordVisible"
+          ></i>
+        </span>
+      </span>
     </template>
     <textarea
       v-else
@@ -47,6 +80,18 @@ export default {
   props: {
     // 默认值
     value: [Number, String],
+    // 文本框尺寸
+    size: {
+      type: String,
+      default: 'large',
+      validator(val) {
+        if (!val || val === 'large') {
+          return true
+        } else {
+          return ['large', 'medium', 'small', 'mini'].includes(val)
+        }
+      }
+    },
     // 文本框类型
     type: {
       type: String,
@@ -59,12 +104,16 @@ export default {
     // 是否只读
     readonly: Boolean,
     // 是否显示切换密码图标
-    showPassword: Boolean
+    showPassword: Boolean,
+    // 头部图标
+    prefixIcon: String,
+    // 尾部图标
+    suffixIcon: String
   },
 
   data() {
     return {
-      focuesd: false,
+      focused: false,
       hovering: false,
       passwordVisible: false
     }
@@ -84,13 +133,38 @@ export default {
         !this.inputDisabled &&
         !this.readonly &&
         this.nativeInputValue &&
-        (this.focuesd || this.hovering)
+        (this.focused || this.hovering)
       )
+    },
+    // 控制是否展示密码试图切换按钮
+    showPwdVisible() {
+      return (
+        this.showPassword &&
+        !this.inputDisabled &&
+        !this.readonly &&
+        (!!this.nativeInputValue || this.focused)
+      )
+    },
+    isWordLimitVisible() {
+      return false
+      // return this.showWordLimit &&
+      //   this.$attrs.maxlength &&
+      //   (this.type === 'text' || this.type === 'textarea') &&
+      //   !this.inputDisabled &&
+      //   !this.readonly &&
+      //   !this.showPassword;
     },
     // 兼容表单的 disabled
     inputDisabled() {
       // TODO Input：兼容表单的 disabled
       return this.disabled
+    },
+    // 文本框尺寸
+    inputSize() {
+      // 指定有效的默认值，防止全局设置size后无法使用默认尺寸
+      const thisSize = this.size == 'large' ? '' : this.size
+      return thisSize
+      // return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
     }
   },
 
@@ -106,6 +180,18 @@ export default {
       if (input.value === this.nativeInputValue) return
       input.value = this.nativeInputValue
     },
+    // 后置内容是否可见
+    getSuffixVisible() {
+      return this.suffixIcon || this.showClear || this.showPassword
+      // return (
+      //   this.$slots.suffix ||
+      //
+      //   this.showClear ||
+      //   this.showPassword ||
+      //   this.isWordLimitVisible ||
+      //   (this.validateState && this.needStatusIcon)
+      // )
+    },
 
     // ---------- 事件 -----------
     handleInput(event) {
@@ -116,7 +202,7 @@ export default {
       this.$nextTick(this.setNativeInputValue)
     },
     handleFocus(event) {
-      this.focuesd = true
+      this.focused = true
       this.$emit('focus', event)
     },
     handleBlur(event) {
@@ -125,6 +211,23 @@ export default {
     },
     handleChange(event) {
       this.$emit('change', event.target.value)
+    },
+
+    // ---------- 操作 -----------
+    focus() {
+      this.getInput().focus()
+    },
+    blur() {
+      this.getInput().blur()
+    },
+    clear() {
+      this.$emit('input', '')
+      this.$emit('change', '')
+      this.$emit('clear')
+    },
+    handlePasswordVisible() {
+      this.passwordVisible = !this.passwordVisible
+      this.focus()
     }
   },
 
