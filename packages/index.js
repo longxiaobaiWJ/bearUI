@@ -1,5 +1,4 @@
 // 导入颜色选择器组件
-// import ColorPicker from './color-picker'
 import Button from "./button";
 import ButtonGroup from "./button-group";
 import Breadcrumb from "./breadcrumb";
@@ -9,16 +8,20 @@ import DropdownItem from "./dropdown-item";
 import DropdownMenu from "./dropdown-menu";
 import Progress from './progress'
 import Main from './main'
-// import Dialog from './dialog'
+import Message from './message'
 import Input from "./input";
+import Divider from './divider'
+// import ColorPicker from './color-picker'
+// import Dialog from './dialog'
 // import Checkbox from './checkbox'
 // import Radio from './radio'
 // import Switch from './switch'
+
 import "./fonts/font.scss";
-import Divider from './divider'
+
+
 // 存储组件列表
 const components = [
-  // ColorPicker,
   Button,
   ButtonGroup,
   Breadcrumb,
@@ -28,12 +31,13 @@ const components = [
   DropdownMenu,
   Progress,
   Main,
-  // Dialog,
+  Divider,
   Input,
+  // ColorPicker,
+  // Dialog,
   // Checkbox,
   // Radio,
   // Switch
-  Divider
 ];
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function(Vue) {
@@ -41,6 +45,8 @@ const install = function(Vue) {
   components.forEach((component) => {
     Vue.component(component.name, component);
   });
+
+  Vue.prototype.$message = Message;
 };
 // 判断是否是直接引入文件
 if (typeof window !== "undefined" && window.Vue) {
@@ -59,10 +65,12 @@ export default {
   DropdownMenu,
   Progress,
   Main,
-  // Dialog,
+  Message,
+  Divider,
   Input,
+  // ColorPicker,
+  // Dialog,
   // Checkbox,
   // Radio,
   // Switch
-  Divider
 };

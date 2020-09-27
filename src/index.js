@@ -89,6 +89,7 @@ import BreadcrumbItem from "../packages/breadcrumb-item";
 import Dropdown from "../packages/dropdown";
 import DropdownItem from "../packages/dropdown-item";
 import DropdownMenu from "../packages/dropdown-menu";
+import Message from "../packages/message";
 import locale from "@/src/locale";
 import CollapseTransition from "@/src/transitions/collapse-transition";
 import "../packages/fonts/font.scss";
@@ -101,6 +102,7 @@ const components = [
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  Message
 ];
 // const components = [
 //   Pagination,
@@ -300,6 +302,7 @@ export default {
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  Message
   // Calendar,
   // Backtop,
   // InfiniteScroll,
