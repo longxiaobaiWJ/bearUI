@@ -1,24 +1,38 @@
 <template>
-<transition name="msgbox-fade">
-	<div class="bu-message-box__wrapper">
-    <div :class="['bu-message-box', customClass]">
-      <div :class="['bu-message-box__header']">
-        <div class="bu-message-box__title">提示</div>
-        <i
-          class="bu-message__closeBtn bu-icon-close"
-          @click="msgClose"
-        ></i>
-      </div>
-      <div :class="['bu-message-box__content']">
-        <slot> bu-message-box__wrapper </slot>
-      </div>
-      <div :class="['bu-message-box__footer']">
-        <slot name="footer"> bu-message-box__wrapper </slot>
+  <transition name="msgbox-fade">
+    <div class="bu-message-box__wrapper" v-show="visible">
+      <div :class="['bu-message-box', customClass]">
+        <div v-if="title" :class="['bu-message-box__header']">
+          <div class="bu-message-box__title">{{ title }}</div>
+          <i class="bu-message__closeBtn bu-icon-close" @click="msgClose"></i>
+        </div>
+        <div :class="['bu-message-box__content']">
+          <slot>
+            <div>{{ message }}</div>
+          </slot>
+        </div>
+        <div :class="['bu-message-box__footer']">
+          <slot name="footer">
+            <bu-button
+              v-if="showCancelButton"
+              @click.native="handleAction('cancel')"
+              size="small"
+            >
+              {{ cancelButtonText }}
+            </bu-button>
+            <bu-button
+              v-if="showConfirmButton"
+              @click.native="handleAction('confirm')"
+              size="small"
+              type="primary"
+            >
+              {{ confirmButtonText }}
+            </bu-button>
+          </slot>
+        </div>
       </div>
     </div>
-  </div>
-</transition>
-  
+  </transition>
 </template>
 
 <script>
@@ -28,10 +42,24 @@
       return {
         dangerouslyUseHTMLString: false,
         customClass: "",
+        visible: false,
+        title: "",
+        message: "",
+        showConfirmButton: true,
+        showCancelButton: false,
+        confirmButtonText: "",
+        cancelButtonText: "",
       };
     },
     methods: {
-      msgClose() {},
+      msgClose() {
+        if (!this.visible) return;
+        this.visible = false;
+      },
+      handleAction(action) {
+				console.log(action);
+				this.msgClose()
+      },
     },
   };
 </script>
@@ -99,5 +127,35 @@
 .bu-message-box__footer {
   padding: 5px 15px 0;
   text-align: right;
+}
+
+.msgbox-fade-enter-active {
+  animation: msgbox-fade-in 0.3s;
+}
+
+.msgbox-fade-leave-active {
+  animation: msgbox-fade-out 0.3s;
+}
+
+@keyframes msgbox-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes msgbox-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
 }
 </style>
