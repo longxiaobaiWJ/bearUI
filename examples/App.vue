@@ -2,6 +2,8 @@
   <bu-main>
     <h2>TestMessage</h2>
     <test-message></test-message>
+    <h2>TestMessageBox</h2>
+    <test-message-box></test-message-box>
     <!-- <h2>button</h2>
     <test-button></test-button>
     <h2>breadcrumb</h2>
@@ -25,6 +27,7 @@
 // import TestProgress from './TestProgress'
 // import TestDivider from './TestDivider'
 import TestMessage from './TestMessage'
+import TestMessageBox from './TestMessageBox'
 
 export default {
   components: {
@@ -35,6 +38,7 @@ export default {
     // TestProgress,
     // TestDivider,
     TestMessage,
+    TestMessageBox
   },
 }
 </script>

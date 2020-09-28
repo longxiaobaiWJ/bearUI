@@ -9,6 +9,7 @@ import DropdownMenu from "./dropdown-menu";
 import Progress from './progress'
 import Main from './main'
 import Message from './message'
+import MessageBox from './message-box'
 import Input from "./input";
 import Divider from './divider'
 // import ColorPicker from './color-picker'
@@ -47,6 +48,10 @@ const install = function(Vue) {
   });
 
   Vue.prototype.$message = Message;
+  Vue.prototype.$msgbox = MessageBox;
+  Vue.prototype.$alert = MessageBox.alert;
+  Vue.prototype.$confirm = MessageBox.confirm;
+  Vue.prototype.$prompt = MessageBox.prompt;
 };
 // 判断是否是直接引入文件
 if (typeof window !== "undefined" && window.Vue) {
@@ -66,6 +71,7 @@ export default {
   Progress,
   Main,
   Message,
+  MessageBox,
   Divider,
   Input,
   // ColorPicker,

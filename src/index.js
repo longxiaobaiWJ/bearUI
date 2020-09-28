@@ -90,6 +90,7 @@ import Dropdown from "../packages/dropdown";
 import DropdownItem from "../packages/dropdown-item";
 import DropdownMenu from "../packages/dropdown-menu";
 import Message from "../packages/message";
+import MessageBox from "../packages/message-box";
 import locale from "@/src/locale";
 import CollapseTransition from "@/src/transitions/collapse-transition";
 import "../packages/fonts/font.scss";
@@ -189,7 +190,7 @@ const install = function(Vue, opts = {}) {
   locale.use(opts.locale);
   locale.i18n(opts.i18n);
 
-  components.forEach((component) => {
+  components.forEach(component => {
     Vue.component(component.name, component);
   });
 
@@ -198,16 +199,16 @@ const install = function(Vue, opts = {}) {
 
   Vue.prototype.$ELEMENT = {
     size: opts.size || "",
-    zIndex: opts.zIndex || 2000,
+    zIndex: opts.zIndex || 2000
   };
 
-  // Vue.prototype.$loading = Loading.service;
-  // Vue.prototype.$msgbox = MessageBox;
-  // Vue.prototype.$alert = MessageBox.alert;
-  // Vue.prototype.$confirm = MessageBox.confirm;
-  // Vue.prototype.$prompt = MessageBox.prompt;
   Vue.prototype.$notify = Notification;
-  // Vue.prototype.$message = Message;
+  Vue.prototype.$message = Message;
+  Vue.prototype.$msgbox = MessageBox;
+  Vue.prototype.$alert = MessageBox.alert;
+  Vue.prototype.$confirm = MessageBox.confirm;
+  Vue.prototype.$prompt = MessageBox.prompt;
+  // Vue.prototype.$loading = Loading.service;
 };
 
 /* istanbul ignore if */
@@ -253,7 +254,6 @@ export default {
   // TimePicker,
   // Popover,
   // Tooltip,
-  // MessageBox,
   // Breadcrumb,
   // BreadcrumbItem,
   // Form,
@@ -302,7 +302,8 @@ export default {
   Dropdown,
   DropdownItem,
   DropdownMenu,
-  Message
+  Message,
+  MessageBox
   // Calendar,
   // Backtop,
   // InfiniteScroll,

@@ -5,7 +5,7 @@
       :class="['bu-message', 'bu-message-radius', customClass]"
       :style="positionStyle"
     >
-      <i :class="['bu-message__icon', this.typeClass]"></i>
+      <i :class="['bu-message__icon', typeClass]"></i>
       <slot>
         <div
           class="bu-message__content"
@@ -17,7 +17,7 @@
       <i
         v-if="showClose"
         class="bu-message__closeBtn bu-icon-close"
-        @click="this.close"
+        @click="close"
       ></i>
     </div>
   </transition>
@@ -87,7 +87,7 @@
   };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bu-message {
   min-width: 380px;
   -webkit-box-sizing: border-box;
