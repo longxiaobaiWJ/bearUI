@@ -125,6 +125,8 @@ export default {
         PopupManager.zIndex = zIndex;
       }
 
+      console.log(props);
+
       if (modal) {
         if (this._closing) {
           PopupManager.closeModal(this._popupId);

@@ -1,15 +1,40 @@
 <template>
   <transition name="msgbox-fade">
-    <div class="bu-message-box__wrapper" v-show="visible">
+    <div
+      class="bu-message-box__wrapper"
+      v-show="visible"
+      @click.self="handleWrapperClick"
+    >
       <div :class="['bu-message-box', customClass]">
         <div v-if="title" :class="['bu-message-box__header']">
           <div class="bu-message-box__title">{{ title }}</div>
-          <i class="bu-message__closeBtn bu-icon-close" @click="msgClose"></i>
+          <i
+            v-if="showClose"
+            class="bu-message__closeBtn bu-icon-close"
+            @click="msgClose"
+          ></i>
         </div>
         <div :class="['bu-message-box__content']">
-          <slot>
-            <div>{{ message }}</div>
-          </slot>
+          <div class="bu-message-box__container">
+            <i
+              v-if="customIcon"
+              :class="['message-box__status', 'bu-message__icon', customIcon]"
+            ></i>
+            <slot>
+              <div v-if="dangerouslyUseHTMLString" v-html="message"></div>
+              <div v-else v-text="message"></div>
+            </slot>
+          </div>
+          <div class="bu-message-box__input" v-if="showInput">
+            <bu-input
+              :type="inputType"
+              v-model="isValidValue"
+              :placeholder="inputPlaceholder"
+            ></bu-input>
+            <div class="bu-message-box__errors" v-show="validIsError">
+              bu-message-box__errors
+            </div>
+          </div>
         </div>
         <div :class="['bu-message-box__footer']">
           <slot name="footer">
@@ -36,30 +61,68 @@
 </template>
 
 <script>
+  // eslint-disable-next-line no-unused-vars
+  import Popup from "@/src/utils/popup"; // 辅助函数，禁止页面滚动等
+
   export default {
     name: "MessageBox",
+    props: {
+      modal: {
+        default: true,
+      },
+    },
     data() {
       return {
+        visible: false,
         dangerouslyUseHTMLString: false,
         customClass: "",
-        visible: false,
         title: "",
         message: "",
         showConfirmButton: true,
         showCancelButton: false,
         confirmButtonText: "",
         cancelButtonText: "",
+        showInput: false,
+        usefulIcon: "",
+        iconClass: "",
+        validIsError: false,
+        isValidValue: "",
+        showClose: false,
+        inputPlaceholder: "请输入内容",
+        inputType: "text",
+        callback: null,
+        action: "",
       };
+    },
+    computed: {
+      customIcon() {
+        return this.iconClass || this.usefulIcon;
+      },
     },
     methods: {
       msgClose() {
         if (!this.visible) return;
         this.visible = false;
+        setTimeout(() => {
+          document.body.style.overflow = "inherit";
+          this.$el.parentNode.removeChild(this.$el);
+        }, 40);
+        if (this.callback) {
+          setTimeout(() => {
+            this.callback(this.action);
+          }, 50);
+        }
       },
       handleAction(action) {
-				console.log(action);
-				this.msgClose()
+        this.action = action;
+        this.msgClose();
       },
+      handleWrapperClick() {},
+    },
+    mounted() {
+      setTimeout(() => {
+        document.body.style.overflow = "hidden";
+      }, 40);
     },
   };
 </script>
@@ -122,6 +185,26 @@
   padding: 10px 15px;
   color: #606266;
   font-size: 14px;
+}
+
+.bu-message-box__container {
+  display: flex;
+  align-items: center;
+}
+
+.bu-message__icon {
+  margin-right: 10px;
+}
+
+.bu-message-box__input {
+  margin-top: 15px;
+}
+
+.bu-message-box__errors {
+  color: #f56c6c;
+  font-size: 12px;
+  min-height: 18px;
+  margin-top: 2px;
 }
 
 .bu-message-box__footer {
