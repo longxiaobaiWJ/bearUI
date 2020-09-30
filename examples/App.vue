@@ -12,6 +12,8 @@
     <test-progress></test-progress>
     <h2>divider</h2>
     <test-divider></test-divider>
+    <h2>pagination</h2>
+    <test-pagination></test-pagination>
   </bu-main>
 </template>
 
@@ -22,6 +24,7 @@ import TestDropdown from './TestDropdown'
 import TestInput from './TestInput'
 import TestProgress from './TestProgress'
 import TestDivider from './TestDivider'
+import TestPagination from './TestPagination'
 
 export default {
   components: {
@@ -31,6 +34,7 @@ export default {
     TestInput,
     TestProgress,
     TestDivider,
+    TestPagination
   },
 }
 </script>
